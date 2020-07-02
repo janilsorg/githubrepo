@@ -45,13 +45,15 @@ route.get('/:username/detail', async (req, res) => {
 });
 
 route.get('/:username/repos', async (req, res) => {
-    
-    let username = req.query.username;
+    var headers = {
+        'Authorization': 'Token '+token
+    }
+    let username = req.params.username;
     
     let url = apiURL+'/users/'+username+'/repos';
     console.log(url);
     try {
-        let r =  await axios.get(url);
+        let r =  await axios.get(url, headers);
         res.send(r.data) ;
     } catch (error) {
         console.log('error');
