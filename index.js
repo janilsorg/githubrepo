@@ -16,7 +16,10 @@ const PORT = process.env.PORT || 5000;
 
 // Middlewares
 app.use(express.json());
-// app.use(cors());
+const corsOptions = {
+    exposedHeaders: 'proximo',
+};
+app.use(cors(corsOptions));
 
 // Rotas middlewares
 app.use('/api/users', usersRoute);
