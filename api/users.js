@@ -10,13 +10,11 @@ const token = '192d8338dd1c4bf55137b192ca7524c395fcec0f';
 route.get('/', async (req, res) => {
     let since = req.query.since;
     try {
-        console.log('started ');
         let r =  await axios.get(apiURL+'/users?since='+since);
-        
         let proximo = r.headers.link.split(";")[0].split('=')[1];
         proximo = proximo.substring(0, proximo.length-1);
 
-        res.set({'proximo': proximo});
+        res.set('proximo', proximo);
         res.send(r.data) ;
     } catch (error) {
         let r = {error: error};
