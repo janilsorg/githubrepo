@@ -8,7 +8,7 @@ npm install
 npm run dev
 ```
 
-### Run in dev mode
+### Run in production mode
 ```
 npm start
 ```
